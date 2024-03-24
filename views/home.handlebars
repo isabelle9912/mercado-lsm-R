@@ -1,0 +1,49 @@
+<div class="bg-light p-5 rounded-lg m-3">
+  {{#if session}}
+    <h1 class="display-4">Olá,
+      {{session.username}}
+      seja bem-vindo ao Mercado LSM</h1>
+    <p class="lead">Seu mercado de confiança, sempre ao seu lado!</p>
+    <hr class="my-4" />
+    <p>Use a sua conta para acessar suas compras:</p>
+    <a
+      class="btn btn-primary btn-lg"
+      href="/client/{{session.userid}}"
+      role="button"
+    >Acessar</a>
+
+  {{else}}
+    <h1 class="display-4">Bem-vindo ao Mercado LSM</h1>
+    <p class="lead">Seu mercado de confiança, sempre ao seu lado!</p>
+    <hr class="my-4" />
+    <p>Use a sua conta para acessar suas compras:</p>
+    <a
+      class="btn btn-primary btn-lg"
+      href="/client/login"
+      role="button"
+    >Entrar</a>
+  {{/if}}
+</div>
+<h3 class="card-title text-center mb-3">Escolha o que deseja fazer:</h3>
+<div class="row">
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Cliente cadastrado</h5>
+        <p class="card-text">Aqui você poderá entrar com seus dados e será
+          redirecionado para sua ficha no mercado.</p>
+        <a href="/client/login" class="btn btn-primary">Entrar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Novo cliente</h5>
+        <p class="card-text">Essa é uma área destinada a adiministradores do
+          sistema.</p>
+        <a href="/admin/addClient" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+  </div>
+</div>

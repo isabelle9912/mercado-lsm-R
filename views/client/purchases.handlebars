@@ -1,0 +1,47 @@
+<h1 class="text-center mb-4">Compras de {{client.name}}</h1>
+{{#if purchases}}
+  <form action="/admin/payPurchases/{{client.id}}" method="POST">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5>Total das compras pendentes: <span class="badge text-bg-success">R$ {{totalPurchases}}</span></h5>
+      </div>
+    </div>
+  </form>
+{{/if}}
+{{#each purchases}}
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="container text-end">
+        <div class="row align-items-end">
+          <div class="col mt-2">
+            <h4>
+              <div class="badge text-bg-primary text-wrap" style="width: 7rem;">
+                R$
+                {{this.purchase_amount}}
+              </div>
+            </h4>
+          </div>
+          <div class="col mt-2">
+            <h4>
+              <div
+                class="badge text-bg-secondary text-wrap"
+                style="width: 8rem;"
+              >
+                {{this.purchase_date}}
+              </div>
+            </h4>
+          </div>
+          <div class="col mt-2">
+            <h4>
+              <div class="badge text-bg-warning text-wrap" style="width: 7rem;">
+                {{this.status}}
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <h2>Nenhuma compra registrada!</h2>
+{{/each}}

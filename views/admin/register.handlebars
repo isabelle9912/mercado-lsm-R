@@ -1,0 +1,38 @@
+<h1>Cadastrar cliente</h1>
+{{#if erros.length}}
+  {{#each erros}}
+    <div class="alert alert-danger">{{this.texto}}</div>
+  {{/each}}
+{{/if}}
+<div class="card">
+  <div class="card-body">
+    <form action="/admin/addClient" method="POST">
+      <label for="name">Nome: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Digite o nome do cliente"
+        required
+      />
+      <label for="senha">Senha: </label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Digite a senha"
+      />
+      <label for="senha">Repita sua senha: </label>
+      <input
+        type="password"
+        class="form-control"
+        name="password2"
+        placeholder="Confirme sua senha"
+      />
+      <button
+        class="btn btn-outline-success mt-3"
+        type="submit"
+      >Cadastrar</button>
+    </form>
+  </div>
+</div>

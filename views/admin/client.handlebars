@@ -1,0 +1,68 @@
+<h1 class="text-center mb-4">Compras de {{client.name}}</h1>
+{{#if purchases}}
+  <form action="/admin/payPurchases/{{client.id}}" method="POST">
+    <div class="card mb-4">
+      <div class="card-body">
+        Total das compras pendentes: R$
+        {{totalPurchases}}<br />
+        <button type="submit" class="btn btn-success mt-2">Pagar Todas</button>
+      </div>
+    </div>
+  </form>
+{{/if}}
+{{#each purchases}}
+  <div class="card mb-3">
+    <div class="card-body">
+      <form action="/admin/payPurchase" method="POST">
+        <input type="hidden" name="id" value="{{this.id}}" />
+        <div class="container text-end">
+          <div class="row align-items-end">
+            <div class="col mt-2">
+              <h4>
+                <div
+                  class="badge text-bg-primary text-wrap"
+                  style="width: 7rem;"
+                >
+                  R$
+                  {{this.purchase_amount}}
+                </div>
+              </h4>
+            </div>
+            <div class="col mt-2">
+              <h4>
+                <div
+                  class="badge text-bg-secondary text-wrap"
+                  style="width: 8rem;"
+                >
+                  {{this.purchase_date}}
+                </div>
+              </h4>
+            </div>
+            <div class="col mt-2">
+              <h4>
+                <div
+                  class="badge text-bg-warning text-wrap"
+                  style="width: 7rem;"
+                >
+                  {{this.status}}
+                </div>
+              </h4>
+            </div>
+            <div class="col mt-2">
+              <button type="submit" class="btn btn-success">Pagar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="container text-end mt-2">
+        <form action="/admin/removePurchase" method="POST">
+          <input type="hidden" value="{{this.id}}" name="id" />
+          <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+        <a href="/admin/editPurchase/{{this.id}}"><button type="submit" class="btn btn-info mt-2">Editar</button></a>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <h2>Nenhuma compra registrada!</h2>
+{{/each}}

@@ -1,0 +1,42 @@
+<h1>Editar cliente</h1>
+{{#if erros.length}}
+  {{#each erros}}
+    <div class="alert alert-danger">{{this.texto}}</div>
+  {{/each}}
+{{/if}}
+<div class="card">
+  <div class="card-body">
+    <form action="/admin/editClient" method="POST">
+      <input type="hidden" name="id" value="{{client.id}}" />
+      <label for="name">Nome: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Digite o novo nome"
+        required
+        value="{{client.name}}"
+      />
+      <label for="senha">Senha: </label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Digite a nova senha"
+      />
+      <label for="senha">Repita sua senha: </label>
+      <input
+        type="password"
+        class="form-control"
+        name="password2"
+        placeholder="Confirme sua senha"
+      />
+      <button class="btn btn-outline-success mt-3" type="submit">Editar</button>
+    </form>
+    <form action="/admin/removeClient/{{client.id}}" method="POST">
+      <button
+        class="btn btn-outline-danger mt-3"
+        type="submit"
+      >Remover</button></form>
+  </div>
+</div>

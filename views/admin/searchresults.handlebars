@@ -1,0 +1,17 @@
+<h1>Resultados:</h1>
+<div class="card mt-4 mb-4">
+  <div class="card-body">
+    <p>{{user.name}}</p>
+    <small>Data de crição: {{user.create_time}}</small>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a href="/admin/clients/edit/{{user.id}}"><button
+          class="btn btn-outline-primary me-md-2"
+          type="button"
+        >Editar</button></a>
+      <a href="/admin/client/{{user.id}}"><button
+          class="btn btn-outline-primary"
+          type="button"
+        >Ver compras</button></a>
+    </div>
+  </div>
+</div>

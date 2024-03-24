@@ -1,0 +1,41 @@
+{{#if client}}
+  <h1 class="mb-3">Adicionar compra:</h1>
+  <h3 class="text-center">{{client.name}}</h3>
+  <div class="card">
+    <div class="card-body">
+      <form action="/admin/addPurchase" method="post">
+        <input type="hidden" name="id" value="{{client.id}}" />
+        <label for="purchase_amount">Valor da Compra:</label>
+        <div class="input-group mt-2 mb-3">
+          <span class="input-group-text">R$</span>
+          <span class="input-group-text">0.00</span>
+          <input
+            type="number"
+            id="purchase_amount"
+            name="purchase_amount"
+            step="0.01"
+            class="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)"
+            placeholder="Use ponto para decimais"
+            required
+          />
+        </div>
+        <label for="purchase_date">Data da Compra:</label>
+        <div class="input-group mt-2 mb-3">
+          <input
+            type="date"
+            class="form-control"
+            id="purchase_date"
+            name="purchase_date"
+            required
+          />
+        </div>
+        <input
+          class="btn btn-outline-success"
+          type="submit"
+          value="Adicionar Compra"
+        />
+      </form>
+    </div>
+  </div>
+{{/if}}
