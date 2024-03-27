@@ -3,6 +3,12 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize("mercado", "mercado_owner", "AcvWy40VRXSp", {
   host: "ep-lively-morning-a5vv77ft.us-east-2.aws.neon.tech",
   dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, 
+    },
+  },
 });
 
 try {
