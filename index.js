@@ -1,3 +1,7 @@
+// .env
+require("dotenv").config();
+const port = process.env.PORT || 5000;
+
 // Modulos
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -9,14 +13,11 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("connect-flash");
 
-
 const { eAdmin } = require("./helpers/eAdmin");
-
 
 // Config
 // Express
 const app = express();
-const port = process.env.PORT || 5000;
 app.use(
   express.urlencoded({
     extended: true,
@@ -48,7 +49,6 @@ app.use(
     },
   })
 );
-
 
 // Flash
 app.use(flash());
@@ -86,7 +86,7 @@ app.use("/client", client);
 
 // Servidor
 // Servidor e conexão com banco
-app.listen(5000);
+app.listen(port);
 conn
   //.sync({force: true})
   .sync()
