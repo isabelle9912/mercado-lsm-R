@@ -21,7 +21,7 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log("Conectado com o banco!");
+    console.log("Conectado com o bancoo!");
   } catch (error) {
     console.error(`Não foi possível conectar: ${error}`);
   }
