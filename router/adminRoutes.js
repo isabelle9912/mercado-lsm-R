@@ -4,7 +4,7 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 
 // helper
-const { eAdmin } = require("../helpers/eAdmin");
+//const { eAdmin } = require("../helpers/eAdmin");
 
 router.get("/addClient", adminController.registerClients);
 router.post("/addClient", adminController.registerSave);
@@ -20,5 +20,6 @@ router.get("/editClient/:id", adminController.updateClient);
 router.post("/editClient", adminController.updateClientPost);
 router.post("/removeClient/:id", adminController.removeClient);
 router.get("/clients", adminController.showClients);
+
 
 module.exports = router;

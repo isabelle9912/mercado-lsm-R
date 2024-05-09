@@ -1,41 +1,40 @@
 <div class="card mb-4 mt-3">
-  <div class="card-body">
-    Total das compras pendentes de todos os clientes:
-    {{totalPurchases}}
-  </div>
+	<div class="card-body">
+		Total das compras pendentes de todos os clientes:
+		{{totalPurchases}}
+	</div>
 </div>
 
 {{#each clients}}
-  <div class="card mt-4 mb-4">
-    <div class="card-body">
-      <p>{{this.name}}</p>
-      <p>R$: {{this.totalPurchases}}</p>
-      <small>Data de criação: {{this.createdAt}}</small>
+	<div class="card mt-4 mb-4">
+		<div class="card-body">
+			<p>{{this.name}}</p>
+			<p>R$: {{this.totalPurchases}}</p>
+			<small>Data de criação: {{this.createdAt}}</small>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="/admin/purchase/{{this.id}}"><button
-            class="btn btn-outline-primary me-md-2 mt-3"
-            type="button"
-          >Ver compras</button></a>
-      </div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a href="/admin/purchase/{{this.id}}"><button
+						class="btn btn-outline-primary me-md-2 mt-3"
+						type="button"
+					>Ver compras</button></a>
+			</div>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="/admin/editClient/{{this.id}}"><button
-            class="btn btn-outline-primary me-md-2 mt-3"
-            type="button"
-        
-          >Editar</button></a>
-      </div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a href="/admin/editClient/{{this.id}}"><button
+						class="btn btn-outline-primary me-md-2 mt-3"
+						type="button"
+					>Editar</button></a>
+			</div>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="/admin/addPurchase/{{this.id}}"><button
-            class="btn btn-success mt-3"
-            type="submit"
-          >Adicionar Compra</button></a>
-      </div>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<a href="/admin/addPurchase/{{this.id}}"><button
+						class="btn btn-success mt-3"
+						type="submit"
+					>Adicionar Compra</button></a>
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 {{else}}
-  Nenhum cliente registrado!
+	Nenhum cliente registrado!
 {{/each}}
