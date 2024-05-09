@@ -81,7 +81,7 @@ app.get("/", (req, res) => {
 	res.render("home");
 });
 
-app.use("/admin", admin);
+app.use("/admin", eAdmin, admin);
 app.use("/client", client);
 
 // Servidor
