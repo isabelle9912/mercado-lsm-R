@@ -1,9 +1,7 @@
 // Modules for ORM, CRIPTOGRAPHY and MODELS
-const { where } = require("sequelize");
 const User = require("../models/User");
 const Purchase = require("../models/Purchase");
 const bcrypt = require("bcrypt");
-const { trace } = require("../router/clientRoutes");
 
 module.exports = class clientController {
   static async showPurchases(req, res) {
@@ -49,6 +47,11 @@ module.exports = class clientController {
     }
   }
 
+  // Pix
+  static async showPix(req, res) {
+    res.render("client/pix");
+  }
+
   // Login
   static login(req, res) {
     res.render("client/login");
@@ -60,7 +63,7 @@ module.exports = class clientController {
     const user = await User.findOne({ where: { name: name } });
 
     if (!user) {
-      req.flash("message", "Usuário não encontrado!");
+      req.flash("message", "Usuário inválido!");
       res.render("client/login");
 
       return;
@@ -70,7 +73,7 @@ module.exports = class clientController {
     const passwordMatch = bcrypt.compareSync(password, user.password);
 
     if (!passwordMatch) {
-      req.flash("error_msg", "Cliente não encontrado!");
+      req.flash("error_msg", "Senha incorreta!");
       res.redirect("/client/login");
       return;
     }

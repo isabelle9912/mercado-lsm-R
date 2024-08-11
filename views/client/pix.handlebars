@@ -1,0 +1,48 @@
+<!-- PAGAR COM O PIX -->
+<script>
+  const copyToBoard = ()=>{ alert('Chave PIX copiada!');
+  navigator.clipboard.writeText("75999600016"); }
+</script>
+<div class="container">
+  <div class="card-body">
+    <div class="card mb-3" style="max-width: 750px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            class="img-fluid rounded-start"
+            src="https://res.cloudinary.com/ddhbhbxcs/image/upload/v1723401050/gas9zdqpqi5by3whsjfg.jpg"
+            class="img-fluid"
+            alt="QR CODE"
+          />
+          <div class="card-body">
+            <p class="text-center">Número do PIX</p>
+            <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <h3 class="text-center">75999600016</h3>
+              </div>
+              <div class="col-auto">
+                <button onclick="copyToBoard()">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Atenção!!</h5>
+            <p class="card-text">Verifique o nome do destinatário do pix antes
+              de realizar o pagamento!!</p>
+            <p class="card-text"><small class="text-body-secondary">Envie o
+                comprovante para confirmar o pagamento!!</small></p>
+            <a href="https://wa.link/u8isol">
+              <button class="btn btn-success"><i class="bi bi-whatsapp">
+                  Enviar o comprovante</i></button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

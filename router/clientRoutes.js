@@ -9,6 +9,7 @@ const { eClient } = require("../helpers/eClient");
 router.get("/login", clientController.login);
 router.post("/login", clientController.loginPost);
 router.get("/logout", clientController.logout);
+router.get("/pix", eClient, clientController.showPix)
 router.get("/:id", eClient, clientController.showPurchases);
 
 module.exports = router;
