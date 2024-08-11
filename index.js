@@ -19,9 +19,9 @@ const { eAdmin } = require("./helpers/eAdmin");
 // Express
 const app = express();
 app.use(
-	express.urlencoded({
-		extended: true,
-	})
+  express.urlencoded({
+    extended: true,
+  })
 );
 
 app.use(express.json());
@@ -32,22 +32,22 @@ const User = require("./models/User");
 
 // Session middleware
 app.use(
-	session({
-		name: "session",
-		secret: "banana-pao",
-		resave: false,
-		saveUninitialized: false,
-		store: new FileStore({
-			logFn: function () {},
-			path: require("path").join(require("os").tmpdir(), "sessions"),
-		}),
-		cookie: {
-			secure: false,
-			maxAge: 3600000,
-			expires: new Date(Date.now() + 3600000),
-			httpOnly: true,
-		},
-	})
+  session({
+    name: "session",
+    secret: "banana-pao",
+    resave: false,
+    saveUninitialized: false,
+    store: new FileStore({
+      logFn: function () {},
+      path: require("path").join(require("os").tmpdir(), "sessions"),
+    }),
+    cookie: {
+      secure: false,
+      maxAge: 3600000,
+      expires: new Date(Date.now() + 3600000),
+      httpOnly: true,
+    },
+  })
 );
 
 // Flash
@@ -55,30 +55,33 @@ app.use(flash());
 
 //Middleware
 app.use((req, res, next) => {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	res.locals.user = req.user || null;
-	next();
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.user = req.user || null;
+  next();
 });
 // Handlebars
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
+
+// Images
+app.use(express.static("images"));
 
 // Public
 app.use(express.static(path.join(__dirname, "public")));
 
 // Set session to res
 app.use((req, res, next) => {
-	if (req.session.userid) {
-		res.locals.session = req.session;
-	}
+  if (req.session.userid) {
+    res.locals.session = req.session;
+  }
 
-	next();
+  next();
 });
 
 // Rotas
 app.get("/", (req, res) => {
-	res.render("home");
+  res.render("home");
 });
 
 app.use("/admin", eAdmin, admin);
@@ -88,9 +91,9 @@ app.use("/client", client);
 // Servidor e conexão com banco
 app.listen(port);
 conn
-	//.sync({force: true})
-	.sync()
-	.then()
-	.catch((error) => {
-		console.log(error);
-	});
+  //.sync({force: true})
+  .sync()
+  .then()
+  .catch((error) => {
+    console.log(error);
+  });

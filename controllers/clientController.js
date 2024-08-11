@@ -1,9 +1,7 @@
 // Modules for ORM, CRIPTOGRAPHY and MODELS
-const { where } = require("sequelize");
 const User = require("../models/User");
 const Purchase = require("../models/Purchase");
 const bcrypt = require("bcrypt");
-const { trace } = require("../router/clientRoutes");
 
 module.exports = class clientController {
   static async showPurchases(req, res) {
@@ -47,6 +45,11 @@ module.exports = class clientController {
         return res.redirect("/");
       });
     }
+  }
+
+  // Pix
+  static async showPix(req, res) {
+    res.render("client/pix");
   }
 
   // Login
