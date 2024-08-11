@@ -63,7 +63,7 @@ module.exports = class clientController {
     const user = await User.findOne({ where: { name: name } });
 
     if (!user) {
-      req.flash("message", "Usuário não encontrado!");
+      req.flash("message", "Usuário inválido!");
       res.render("client/login");
 
       return;
@@ -73,7 +73,7 @@ module.exports = class clientController {
     const passwordMatch = bcrypt.compareSync(password, user.password);
 
     if (!passwordMatch) {
-      req.flash("error_msg", "Cliente não encontrado!");
+      req.flash("error_msg", "Senha incorreta!");
       res.redirect("/client/login");
       return;
     }
